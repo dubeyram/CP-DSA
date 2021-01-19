@@ -1,2 +1,2 @@
 # CP-Algorithms
-All the Important Competitive Programming Used Algorithms with Python.
+All the Important Competitive Programming Used Data Structures & Algorithms with Python.
