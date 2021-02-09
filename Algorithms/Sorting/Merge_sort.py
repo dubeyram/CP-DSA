@@ -1,29 +1,37 @@
 class Solution:
-    # Quick sort TC: O(NlogN)
-    def sortArray(self, nums: List[int]) -> List[int]: 
-        # Pivot: last element
-        # return: the correct pivot position
-        # Place smaller elements than pivot value to left of the pivot
-        # Place all bigger eleements than pivot value to the right of the pivot
-        def partition(arr, l, r):
-            i = l-1 # index of smaller element
-            pivot = r # pivot index
-            
-            for j in range(l, r):
-                # If current elemnt is smaller element than or equal to pivot value    
-                if arr[j] <= arr[pivot]:
-                    i += 1 # In crement index of smaller element to make a room to place it
-                    arr[i], arr[j] = arr[j], arr[i]
-            
-            arr[i+1], arr[pivot] = arr[pivot], arr[i+1]
-            return i+1
-        
-        def quick_sort(arr, l, r):
-            if l < r:
-                pi = partition(arr, l, r)
-                quick_sort(arr, l, pi-1)
-                quick_sort(arr, pi+1, r)
-        
-        quick_sort(nums, 0, len(nums)-1)
+    # Merge sort TC: O(NlogN)
+    def sortArray(self, nums: List[int]) -> List[int]:
+        if len(nums) > 1: # Important
+            mid = len(nums)//2 # Finding the mid of array
+            L = nums[:mid] # Dividing the array elements into 2 halves
+            R = nums[mid:] 
+
+            self.sortArray(L) # Sorting the first half
+            self.sortArray(R) # Sorting the second half
+
+            # Merging
+            i = j = k = 0
+            while i < len(L) and j < len(R):
+                #...
+                if L[i] < R[j]:
+                    nums[k] = L[i]
+                    i += 1
+                    k += 1
+                else:
+                    nums[k] = R[j]
+                    j += 1
+                    k += 1
+
+            # Checking if any element was left
+            while i < len(L):
+                nums[k] = L[i]
+                i += 1
+                k += 1
+
+            while j < len(R):
+                nums[k] = R[j]
+                j += 1
+                k += 1
+        # Edge case [0] Just return nums
         return nums
     
