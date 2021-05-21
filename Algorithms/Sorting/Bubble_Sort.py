@@ -1,59 +1,65 @@
-# # Python3 Optimized implementation 
-# # of Bubble sort 
+'''
+ALGORITHM : 
 
-# # An optimized version of Bubble Sort 
-# def bubbleSort(arr): 
-# 	n = len(arr) 
+begin BubbleSort(list)
 
-# 	# Traverse through all array elements 
-# 	for i in range(n): 
-# 		swapped = False
+   for all elements of list
+      if list[i] > list[i+1]
+         swap(list[i], list[i+1])
+      end if
+   end for
+   
+   return list
+   
+end BubbleSort
 
-# 		# Last i elements are already 
-# 		# in place 
-# 		for j in range(0, n-i-1): 
 
-# 			# traverse the array from 0 to 
-# 			# n-i-1. Swap if the element 
-# 			# found is greater than the 
-# 			# next element 
-# 			if arr[j] > arr[j+1] : 
-# 				arr[j], arr[j+1] = arr[j+1], arr[j] 
-# 				swapped = True
+PSEUDOCODE :
 
-# 		# IF no two elements were swapped 
-# 		# by inner loop, then break 
-# 		if swapped == False: 
-# 			break
+
+procedure bubbleSort( list : array of items )
+
+   loop = list.count;
+   
+   for i = 0 to loop-1 do:
+      swapped = false
 		
-# # Driver code to test above 
-# arr = [64, 34, 25, 12, 22, 11, 90] 
+      for j = 0 to loop-1 do:
+      
+         /* compare the adjacent elements */   
+         if list[j] > list[j+1] then
+            /* swap them */
+            swap( list[j], list[j+1] )		 
+            swapped = true
+         end if
+         
+      end for
+      
+      /*if no number was swapped that means 
+      array is sorted now, break the loop.*/
+      
+      if(not swapped) then
+         break
+      end if
+      
+   end for
+   
+end procedure return list
 
-# bubbleSort(arr) 
 
-# print ("Sorted array :") 
-# for i in range(len(arr)): 
-# 	print ("%d" %arr[i],end=" ") 
+'''
 
-n = int(input())
-s = input()
-count=0
-if "00" not in s and "11" not in s:
-    print(0)
+def bubbleSort(ar):
+   n = len(ar)
+   # Traverse through all array elements
+   for i in range(n):
+      # Last i elements are already in correct position
+      for j in range(0, n-i-1):
+         # Swap if the element found is greater than the next element
+         if ar[j] > ar[j+1] :
+            ar[j], ar[j+1] = ar[j+1], ar[j]
 
-else:
-    s = list(s)
 
-    for i in range(1,n):
-        if s[0]==s[1]!=s[2]:
-            s[0]=s[2]
-            count +=1
-        elif s[i]==s[i-1]=="1":
-            s[i]="0"
-            print("yes")
-            count+=1
-        elif s[i]==s[i-1]=="0":
-            s[i]="1"
-            count+=1
-        print(s)
-    print(count)
+# Worst and Average Case Time Complexity: O(n*n)
+# Best Case Time Complexity: O(n).
+# Auxiliary Space: O(1)
